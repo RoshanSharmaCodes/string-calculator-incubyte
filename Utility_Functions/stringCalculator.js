@@ -19,6 +19,9 @@ class StringCalculator {
       .map((val) => parseInt(val, 10))
       .filter((val) => !isNaN(val))
 
+    //Checking for negative values in number array.
+    this.handleNegativeNumbers(numArray)
+
     //Calculate the sum of number array.
     return numArray.reduce((sum, num) => sum + num, 0)
   }
@@ -33,6 +36,13 @@ class StringCalculator {
   splitAtFirstOccurrence(str, delimiter) {
     const [delimiterStr, ...rest] = str.split(delimiter)
     return [delimiterStr, rest.join(delimiter)]
+  }
+
+  handleNegativeNumbers(numArray) {
+    const negativeNumArr = numArray.filter((num) => num < 0)
+    if (negativeNumArr.length) {
+      throw new Error(`negative numbers not allowed: ${negativeNumArr.join(", ")}`)
+    }
   }
 }
 
