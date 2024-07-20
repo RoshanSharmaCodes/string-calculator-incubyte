@@ -5,7 +5,7 @@ class StringCalculator {
         if (typeof numbers !== "string") return 0
     
         //Declaration space.
-        let delimiter = ","
+        let delimiter = /[,\n]/
         let numString = numbers
     
         //Converting number strings to number array.
