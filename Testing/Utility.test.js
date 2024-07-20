@@ -43,4 +43,23 @@ describe("String Calculator Functionality", () => {
       expect(strCalc.add("1\n2,\n3\n5\n\n6\n7")).toBe(24)
     })
   })
+
+  describe("3. Custom Delimiters :-", () => {
+    test("TC: 3.1 -> Supports different single-character custom delimiters.", () => {
+      expect(strCalc.add("//;\n1;2")).toBe(3)
+      expect(strCalc.add("//|\n1|2|3")).toBe(6)
+    })
+    
+    test("TC: 3.2 -> Supports '-' character as custom delimiters.", () => {
+      expect(strCalc.add("//-\n1-2-3")).toBe(6)
+    })
+
+    test("TC: 3.3 -> Supports multi-character custom delimiters.", () => {
+      expect(strCalc.add("//[***]\n10***100***1200")).toBe(1310)
+      expect(strCalc.add("//[**]\n1**2**3")).toBe(6)
+      expect(strCalc.add("//[&&]\n1&&2&&3")).toBe(6)
+      expect(strCalc.add("//[&&]\n1\n2&&3")).toBe(6)
+      expect(strCalc.add("//[&&]\n1\n2\n3")).toBe(6)
+    })
+  })
 })
