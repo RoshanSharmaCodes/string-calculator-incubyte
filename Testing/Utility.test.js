@@ -62,4 +62,14 @@ describe("String Calculator Functionality", () => {
       expect(strCalc.add("//[&&]\n1\n2\n3")).toBe(6)
     })
   })
+
+  describe("4. Error Handling :-", () => {
+    test("TC: 4.1 -> Throw an exception for negative numbers.", () => {
+      expect(() => strCalc.add("1,-2,3,-4")).toThrow("negative numbers not allowed: -2, -4")
+    })
+
+    test("TC: 4.2 -> Throw an exception for negative numbers with a custom delimiter.", () => {
+      expect(() => strCalc.add("//;\n1;-2;3;-4")).toThrow("negative numbers not allowed: -2, -4")
+    })
+  })
 })
